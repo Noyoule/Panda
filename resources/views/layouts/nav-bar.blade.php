@@ -1,5 +1,5 @@
 <header>
-   <nav class="flex justify-between gap-1 mx-4 my-1 text-my_blue">
+   <nav class="flex p-1 justify-between gap-1 px-4 my-1 bg-my_green2">
     <div class="logo text-3xl text-bold">Panda</div>
     <div>
         <ul class="justify-between gap-5 text-xl hidden md:flex">

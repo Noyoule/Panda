@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,21 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/my-dashboard',[DashbordController::class,'index'])->name('my-dashboard')->middleware('auth');
+Route::post('/hotel-post',[DashbordController::class,'store'])->name('store-hotel')->middleware('auth');
+
+Route::get('/gerez-chambre', function () {
+    return view('gerer-chambre');
+})->name('gerer-chambre');
+
+Route::get('/gerez-specialite', function () {
+    return view('gerer-specialite');
+})->name('gerer-specialite');
+
+Route::get('/gerez-grille-de-reservation', function () {
+    return view('ajouter-grille-de-reservation');
+})->name('gerer-grille-de-reservations');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
