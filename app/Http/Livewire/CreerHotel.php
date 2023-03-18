@@ -15,13 +15,13 @@ class CreerHotel extends Component
 
     protected $rules = [
         'file' => ['required','image'],
-        'name' => ['required','min:5'],
+        'name' => ['required','min:3'],
         'type' => ['required', 'numeric','not_in:Sélectionner le type','in:1,2,3,4,5'],
       ];
     
       protected $messages = [
         'type.required' => 'Le champ de doit pas être vide',
-        'name.min' => 'Le type doit contenir au moins 5 caractères',
+        'name.min' => 'Le type doit contenir au moins 3 caractères',
         'file.image'=>'Le fichier doit être une image',
         'file.required'=>'L\'image est obligatoire',
         'name.required' =>'Le champ de doit pas être vide',

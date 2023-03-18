@@ -28,11 +28,10 @@ class AjouterType extends Component
 
   public function store()
   {
-
     $this->validate();
    $type = Type::create([
       'nom' => $this->type,
-      'hotel_id' => auth()->user()->hotel()->first()->id
+      'hotel_id' => auth()->user()->hotel->id,
     ]);
 
     $this->emit('typeCreated', $type);

@@ -15,7 +15,7 @@ class GererSpecialite extends Component
     public $specialites;
 
     protected $rules = [
-        'file' => ['image', 'required'],
+        'file' => ['required','image'],
         'name' => ['required', 'min:5'],
         'prix' => ['required', 'min:3'],
     ];
@@ -50,19 +50,21 @@ class GererSpecialite extends Component
             'nom' => $this->name,
             'prix' => $this->prix,
             'image_path' => $path,
-            'hotel_id' => auth()->user()->hotel()->first()->id,
+            'hotel_id' => auth()->user()->hotel->id,
         ]);
 
         $this->reset('name');
         $this->reset('prix');
         $this->reset('file');
+        $this->specialites = auth()->user()->hotel->specialites()->get();
         session()->flash('message', 'Spécialité ajouter avec success');
     }
 
     public function delete($id){
         $specialite = Specialite::find($id);
         $specialite->delete();
-        return redirect()->route('gerer-specialite');
+    
+        $this->specialites = auth()->user()->hotel->specialites()->get();
     }
 
 

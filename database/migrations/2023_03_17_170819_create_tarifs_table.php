@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\Hotel;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -14,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('tarifs', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('type');
-            $table->string('image_path');
-            $table->foreignId('user_id')->constrained();
+            $table->string('durer');
+            $table->string('Chambre_type');
+            $table->string('prix');
+            $table->foreignId('hotel_id')->constrained();
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -30,7 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('tarifs');
     }
-
 };

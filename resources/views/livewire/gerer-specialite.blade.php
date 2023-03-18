@@ -9,7 +9,7 @@
             </svg></button>
         <!-- Dropdown menu -->
 
-        <div class="p-6 bg-white h-100" x-show="open" x-transition>
+        <div class="p-6 bg-white h-100" x-show="open"  @click.outside="open = false" x-transition>
             <form wire:submit.prevent='store'>
                 @if (session()->has('message'))
                     <div class="alert text-green-500 mb-6 bg-green-300 p-4" style="margin-top: 40px">
@@ -28,11 +28,11 @@
                     </div>
                 @endif
                 <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Importer une image </label>
                     <p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" onclick="document.querySelector('#file').click()" class="w-8 h-8">
+                            stroke="currentColor" onclick="document.querySelector('#file').click()" class="w-8 h-8 cursor-pointer">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                         </svg>
@@ -43,18 +43,18 @@
                     <div class="bg-red-100 p-3 mb-3"><span class="error text-red-500">{{ $message }}</span></div>
                 @enderror
                 <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Nom de la spécialité</label>
-                    <input type="text" id="email" wire:model='name'
+                    <input type="text"  wire:model='name'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 </div>
                 @error('name')
                     <div class="bg-red-100 p-3 mb-3"><span class="error text-red-500">{{ $message }}</span></div>
                 @enderror
                 <div class="mb-6">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Prix</label>
-                    <input type="text" id="email" wire:model='prix'
+                    <input type="text" wire:model='prix'
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Exemple:7000 francs CFA">
                 </div>

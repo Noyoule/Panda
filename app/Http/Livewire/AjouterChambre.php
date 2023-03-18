@@ -39,14 +39,13 @@ class AjouterChambre extends Component
 
   public function store()
   {
-
     $this->validate();
 
     Chambre::create([
       'numero' => $this->numero,
       'type_id' => $this->imputType,
       'statut' => 'libre',
-      'hotel_id' => auth()->user()->hotel()->first()->id,
+      'hotel_id' => auth()->user()->hotel->id,
     ]);
     $this->reset('numero');
     $this->reset('imputType');
