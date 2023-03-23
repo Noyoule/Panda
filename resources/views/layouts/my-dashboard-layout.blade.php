@@ -82,7 +82,8 @@
                         <path
                             d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                     </svg>
-                </button> <span class="font-bold text-sm ml-2">Déconnexion</span>
+                </button class="cursor-pointer"> <span class="font-bold text-sm ml-2 cursor-pointer" onclick="document.querySelector('#deconection_id').submit()">Déconnexion</span>
+                <form id="deconection_id" action="{{ route('logout') }}" method="POST">@csrf</form>
             </div>
         </div>
     </aside>
@@ -96,19 +97,7 @@
         </div>
     </main>
     @livewireScripts
-    <script>
-        Livewire.on('typeCreated', function(type) {
-            let select = document.getElementById("select-chambre");
 
-            let newOption = document.createElement("option");
-
-            let optionText = document.createTextNode(type.nom);
-            newOption.appendChild(optionText);
-            newOption.value = type.id;
-
-            select.appendChild(newOption);
-        });
-    </script>
 </body>
 
 </html>

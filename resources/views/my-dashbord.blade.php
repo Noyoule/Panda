@@ -18,7 +18,7 @@
                     <span class="text-sm">Archive</span>
                 </button> --}}
             </div>
-            <div class="text-lg font-bold">Admistration</div>
+            <div class="text-lg font-bold">Administration</div>
             <div>
                 <button type="button"
                     class="flex items-center focus:outline-none rounded-lg text-gray-600 hover:text-yellow-600 focus:text-yellow-600 font-semibold p-2 border border-transparent hover:border-yellow-300 focus:border-yellow-300 transition">
@@ -43,7 +43,10 @@
 <livewire:creer-hotel>
 @else
 <div class="bg-white rounded-3xl p-8 mb-5">
-    <h1 class="text-3xl font-bold mb-10">Tous les paramètre présent de votre hotel s'affichent ici</h1>
+   <div class="flex items-center my-3 gap-2">
+    <img src="{{$hotel->image_path}}" class="w-16 h-16 rounded-full" alt="">
+    <h1 class="text-3xl font-bold">{{$hotel->nom}}</h1>
+   </div>
     <div class="flex items-center justify-between">
         <div class="flex items-stretch">
             <div class="text-gray-400 text-xs">Administrateur<br></div>
@@ -80,28 +83,22 @@
             <div class="grid grid-cols-2 gap-4">
                 <div class="col-span-2">
                     <div class="p-4 bg-green-100 rounded-xl">
-                        <div class="font-bold text-xl text-gray-800 leading-none">50/150 chambres disponibles
+                        <div class="font-bold text-xl text-gray-800 leading-none">{{$libre.'/'.$chambre}} chambres disponibles
                         </div>
                         <div class="mt-5">
-                            <button type="button"
+                            <a href="{{route('gerer-chambre')}}">
+                                <button type="button"
                                 class="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition">
-                                Mettre à jour
+                                Modifier
                             </button>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
-                    <div class="font-bold text-2xl leading-none">20</div>
-                    <div class="mt-2">Tasks finished</div>
-                </div>
-                <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
-                    <div class="font-bold text-2xl leading-none">5,5</div>
-                    <div class="mt-2">Tracked hours</div>
                 </div>
                 <div class="col-span-2">
                     <div class="p-4 bg-purple-100 rounded-xl text-gray-800">
                         <div class="font-bold text-xl leading-none">Vos spécialité</div>
-                        <div class="mt-2">Voir tous</div>
+                        <div class="mt-2"><a href="{{route('gerer-specialite')}}">Voir tous</a></div>
                     </div>
                 </div>
             </div>

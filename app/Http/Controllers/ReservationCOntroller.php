@@ -12,13 +12,13 @@ class ReservationCOntroller extends Controller
     public function storereservation(ApiRequest $request, $nom, $prenom, $mail, $id_hotel, $id_tarif, $key)
     {
         Hotel::factory()->count(30)->create();
-       /*  Reservation::create([
+        Reservation::create([
             'nomClient' => $nom,
             'prenomClient' => $prenom,
             'mailClient' => $mail,
             'hotel_id' => $id_hotel,
             'tarif_id' => $id_tarif,
-        ]);*/
+        ]);
         return response()->json(['message' => 'Reservation effectué avec succès']); 
     }
 

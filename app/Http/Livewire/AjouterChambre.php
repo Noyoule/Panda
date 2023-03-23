@@ -10,7 +10,7 @@ class AjouterChambre extends Component
   public $types;
   public $numero;
   public $imputType;
-
+  protected $listeners = ['typeCreated' => 'ResetInputType'];
 
   public function mount()
   {
@@ -47,9 +47,14 @@ class AjouterChambre extends Component
       'statut' => 'libre',
       'hotel_id' => auth()->user()->hotel->id,
     ]);
+    $this->emit('Chambre_Creer');
     $this->reset('numero');
     $this->reset('imputType');
     session()->flash('message', 'Chambre ajouter avec success');
+  }
+
+  public function ResetInputType(){
+    $this->types = auth()->user()->hotel->types;
   }
 
   public function render()

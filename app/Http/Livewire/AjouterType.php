@@ -34,7 +34,7 @@ class AjouterType extends Component
       'hotel_id' => auth()->user()->hotel->id,
     ]);
 
-    $this->emit('typeCreated', $type);
+    $this->emit('typeCreated');
     $this->reset('type');
     session()->flash('message', 'Type ajouter avec success');
   }

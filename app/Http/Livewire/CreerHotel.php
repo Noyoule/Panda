@@ -41,7 +41,7 @@ class CreerHotel extends Component
             'nom'=>$this->name,
             'type'=>$this->type,
             'image_path'=> $path,
-            'user_id'=> auth()->user()->id
+            'user_id'=> auth()->user()->id,
         ]);
          return redirect()->route('my-dashboard');
     }
