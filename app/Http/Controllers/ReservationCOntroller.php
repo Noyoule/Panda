@@ -24,6 +24,8 @@ class ReservationCOntroller extends Controller
 
     public function validerReservation(ApiRequest $request, $id, $key)
     {
+        $reservation = Reservation::find($id);
+       if($reservation->payer ==0){
         $min = 1000000;
         $max = 9999999;
         $timestamp = time();
@@ -31,7 +33,9 @@ class ReservationCOntroller extends Controller
         $code = $timestamp.''.$pre_code;
         $reservation = Reservation::find($id);
         $reservation->update(['payer' => 1,'code' => $code]);
-
         return response()->json(['code' => $code]);
+       }else{
+        return response()->json(['erreur' => 'Vous avez deja payer cette reservation']); 
+       }
     }
 }

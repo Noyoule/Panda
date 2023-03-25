@@ -30,9 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/my-dashboard', [DashbordController::class, 'index'])->name('my-dashboard')->middleware(['auth','is_not_Master']);
+Route::get('/my-dashboard', [DashbordController::class, 'index'])->name('my-dashboard')->middleware(['auth', 'is_not_Master']);
 
-Route::middleware(['auth', 'is_not_Master','has_hotel'])->group(function () {
+Route::middleware(['auth', 'is_not_Master', 'has_hotel'])->group(function () {
     Route::post('/hotel-post', [DashbordController::class, 'store'])->name('store-hotel')->middleware('auth');
 
     Route::get('/gerez-chambre', function () {
@@ -42,6 +42,10 @@ Route::middleware(['auth', 'is_not_Master','has_hotel'])->group(function () {
     Route::get('/gerez-specialite', function () {
         return view('gerer-specialite');
     })->name('gerer-specialite');
+
+    Route::get('/reservations', function () {
+        return view('reservation');
+    })->name('reservation');            
 
     Route::get('/gerez-grille-de-reservation', function () {
         return view('ajouter-grille-de-reservation');

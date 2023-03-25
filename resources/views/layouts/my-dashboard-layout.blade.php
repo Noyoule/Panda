@@ -52,7 +52,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('reservation') }}"
                                 class="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="text-lg mr-4" viewBox="0 0 16 16">
@@ -96,8 +96,7 @@
             </div>
         </div>
     </main>
-    @livewireScripts
-
+    @livewireScripts      
 </body>
 
 </html>
