@@ -11,11 +11,19 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if(auth()->user()->master==1)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Tableau de bord') }}
                     </x-nav-link>
                 </div>
+                @else
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('my-dashboard')" :active="request()->routeIs('my-dashboard')">
+                        {{ __('Tableau de bord') }}
+                    </x-nav-link>
+                </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

@@ -67,10 +67,12 @@
                         d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
                 </svg>
             </button>
+           <a href="{{ route('profile.edit') }}">
             <button type="button"
-                class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
-                Open
-            </button>
+            class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
+            Open
+        </button>
+           </a>
         </div>
     </div>
 
@@ -106,63 +108,41 @@
         <div>
             <h2 class="text-2xl font-bold mb-4">Reservations de cette journée</h2>
 
-            <div class="space-y-4">
-                <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                    <div class="flex justify-between">
-                        <div class="text-gray-400 text-xs">Number 10</div>
-                        <div class="text-gray-400 text-xs">4h</div>
-                    </div>
-                    <a href="javascript:void(0)"
-                        class="font-bold hover:text-yellow-800 hover:underline">Blog and social
-                        posts</a>
-                    <div class="text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                            fill="currentColor" class="text-gray-800 inline align-middle mr-1"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                        </svg>Plus d'info
-                    </div>
+            <div class="space-y-4" style="overflow-y: scroll">
+              @foreach ($reservations as $reservation)
+              <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
+                <div class="flex justify-between">
+                    <div class="text-gray-400 text-xs">Numéro de chambre: {{ $reservation->chambre }}</div>
+                    <div class="text-gray-400 text-xs">{{ $reservation->updated_at->format('H:i:s') }}</div>
                 </div>
-                <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                    <div class="flex justify-between">
-                        <div class="text-gray-400 text-xs">Number 10</div>
-                        <div class="text-gray-400 text-xs">4h</div>
-                    </div>
-                    <a href="javascript:void(0)"
-                        class="font-bold hover:text-yellow-800 hover:underline">Blog and social
-                        posts</a>
-                    <div class="text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                            fill="currentColor" class="text-gray-800 inline align-middle mr-1"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                        </svg>Plus d'info
-                    </div>
+                <a 
+                    class="font-bold hover:text-yellow-800 hover:underline"><span class="text-sm text-gray-700">Nom du client: </span>{{ $reservation->nomCLient }}</a>
+               <a href="{{ route('reservation') }}">
+                <div class="text-sm text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                        fill="currentColor" class="text-gray-800 inline align-middle mr-1"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg>Plus d'info
                 </div>
-                <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                    <div class="flex justify-between">
-                        <div class="text-gray-400 text-xs">Grace Aroma</div>
-                        <div class="text-gray-400 text-xs">7d</div>
-                    </div>
-                    <a href="javascript:void(0)"
-                        class="font-bold hover:text-yellow-800 hover:underline">New campaign review</a>
-                    <div class="text-sm text-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                            fill="currentColor" class="text-gray-800 inline align-middle mr-1"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                        </svg>Plus d'info
-                    </div>
-                </div>
+               </a>
+            </div>
+              @endforeach
             </div>
         </div>
     </div>
 </div>
 @endif
 <style>
+    ::-webkit-scrollbar{
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: black;
+        border-radius:5px; 
+    }
     .active{
         background-color: #FDE68A;
     }

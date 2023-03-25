@@ -16,7 +16,7 @@ class GererSpecialite extends Component
 
     protected $rules = [
         'file' => ['required','image'],
-        'name' => ['required', 'min:5'],
+        'name' => ['required', 'min:3'],
         'prix' => ['required', 'min:3'],
     ];
 
@@ -24,7 +24,7 @@ class GererSpecialite extends Component
         'file.image' => 'Le fichier doit être une image',
         'file.required' => 'L\'image est obligatoire',
         'name.required' => 'Le champ de doit pas être vide',
-        'name.min' => 'Le type doit contenir au moins 5 caractères',
+        'name.min' => 'Le type doit contenir au moins 3 caractères',
         'prix.min' => 'Le prix doit avoir au moin 3 caractères',
         'prix.required' => 'Le champ de doit pas être vide',
 

@@ -19,7 +19,7 @@
 
 <body style="width: 100%; max-height: 100vh; overflow: hidden">
     <div class="absolute top-0 bottom-0 left-0 right-0">
-        <img src="{{ asset('img/sara-dubler-Koei_7yYtIo-unsplash.jpg') }}" alt="" height="1000px" width="100%"
+        <img src="{{ asset('img/vi2.jpg') }}" alt="" height="1000px" width="100%"
             style="object-fit: cover;min-height: 100%;">
     </div>
     <section class="relative m-0 p-0" style="background-color: rgba(0,0,0, 0.367); height: 100vh; overflow: scroll">
@@ -101,7 +101,7 @@
         }
     </style>
     <script>
-        var tab = ['{{asset('img/edvin-johansson-rlwE8f8anOc-unsplash.jpg')}}','{{asset('img/hotel-sancta-maria.jpg')}}','{{asset('img/IMG_20230315_161655_466.jpg')}}','{{asset('img/kelsey-curtis--27u_GzlAFw-unsplash.jpg')}}','{{asset('img/mike-swigunski-yERyCOOT8i8-unsplash.jpg')}}','{{asset('img/myriam-grrdz-CmmWGcdj38U-unsplash.jpg')}}','{{asset('img/sara-dubler-Koei_7yYtIo-unsplash.jpg')}}','{{asset('img/sasha-kaunas-xEaAoizNFV8-unsplash.jpg')}}','{{asset('img/vojtech-bruzek-Yrxr3bsPdS0-unsplash.jpg')}}','{{asset('img/vojtech-bruzek-Yrxr3bsPdS0-unsplash.jpg')}}']
+        var tab = ['{{asset('img/vi1.jpg')}}','{{asset('img/vi2.jpg')}}','{{asset('img/vi3.jpg')}}','{{asset('img/hotel-sancta-maria.jpg')}}','{{asset('img/vi4.jpg')}}','{{asset('img/vi5.jpg')}}','{{asset('img/vi6.jpg')}}','{{asset('img/vi7.jpg')}}','{{asset('img/vi8.jpg')}}','{{asset('img/v9.jpg')}}']
         var image = document.querySelector('.left-image');
         var i = 0
         setInterval(() => {

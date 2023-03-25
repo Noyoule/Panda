@@ -20,6 +20,9 @@
                     Code
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Numéro de chambre
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Date
                 </th>
             </tr>
@@ -39,6 +42,9 @@
                     </td>
                     <td class="px-6 py-4 {{(str_contains(strtolower($reservation->code), strtolower($query))==1 && $query!='' )? ' text-green-500 ': 'text-gray-900'}}">
                         {{ $reservation->code }}
+                    </td>
+                    <td class="px-6 py-4  {{(str_contains(strtolower($reservation->chambre), strtolower($query))==1 && $query!='' )? ' text-green-500 ': 'text-gray-900'}}">
+                        {{ $reservation->chambre }}
                     </td>
                     <td class="px-6 py-4  {{(str_contains(strtolower($reservation->updated_at), strtolower($query))==1 && $query!='' )? ' text-green-500 ': 'text-gray-900'}}">
                         {{ $reservation->updated_at }}

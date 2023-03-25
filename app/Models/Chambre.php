@@ -19,5 +19,7 @@ class Chambre extends Model
     $type = Type::find($this->type_id);
     return $type;
    }
+
+
     use HasFactory;
 }
