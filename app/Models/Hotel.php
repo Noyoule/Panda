@@ -13,6 +13,8 @@ class Hotel extends Model
     protected $fillable = [
         'nom',
         'type',
+        'longitude',
+        'latitude',
         'image_path',
         'user_id'
     ];

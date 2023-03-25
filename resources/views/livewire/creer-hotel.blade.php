@@ -1,5 +1,25 @@
 <div class="bg-white">
-    <h1 class="px-8 py-3">Créer votre Hotels avant de continuer</h1>
+    @if (session()->has('message'))
+    <div class="alert text-green-500 mb-6 bg-green-300 p-4" style="margin-top: 40px">
+        {{ session('message') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            document.querySelector('.alert').remove();
+        }, 5000); // 5000 millisecondes = 5 secondes
+    </script>
+@endif
+@if (session()->has('erreur'))
+<div class="alert2 text-red-500 mb-6 bg-red-300 p-4" style="margin-top: 40px">
+    {{ session('erreur') }}
+</div>
+<script>
+    setTimeout(function() {
+        document.querySelector('.alert2').remove();
+    }, 5000); // 5000 millisecondes = 5 secondes
+</script>
+@endif
+    <h1 class="px-8 py-3">Créer votre Hotels avant de continuer <br><i class="text-sm text-gray-700">Pour ajouter votre hotel vous devez forcément être dans ce dernier pour obtenir ça position exacte</i></h1>
     <div class="w-full bg-white p-6">
         <form wire:submit.prevent='store' method="POST">
             @csrf
@@ -52,8 +72,54 @@
             @error('type')
                 <div class="bg-red-100 p-3 mb-3"><span class="error text-red-500">{{ $message }}</span></div>
             @enderror
+            <div>
+                <input type="text" id="longitude_id">
+                <input type="text" id="latitude_id" >
+            </div>
+            <div>
+                <i class="text-sm text-gray-700">Pour ajouter votre hotel vous devez forcément être dans ce dernier pour obtenir ça position exacte</i>
+                <p class="mt-3 text-gray-800"><i>Cliquez sur le bouton ci dessous pour renseigner la position de votre hotel</i></p>
+                <p id="getLocation2" class="border border-gray-200 rounded text-red-600 p-1 m-1 bg-gray-100 cursor-pointer" style="width: 35px">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                      </svg>                      
+                    </p>
+            </div>
             <button type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Valider</button>
         </form>
     </div>
+    <script>
+        if(document.querySelector('#getLocation2') != null){
+        document.querySelector('#getLocation2').addEventListener('click',()=>{
+            if (navigator.geolocation) {
+                console.debug('geolocalisation en cours...'); 
+                navigator.geolocation.getCurrentPosition(getPosition, getError); 
+             } 
+             else         document.getElementById("error").innerHTML="La géolocalisation n'est pas disponible avec votre navigateur.";         })
+    }
+    
+    function getPosition(position) 
+    { 
+      var Postion_donne = [position.coords.latitude,position.coords.longitude]
+       Livewire.emit('LocationAdded',Postion_donne);
+    } 
+    
+    function getError(error) 
+    {
+       switch(error.code) { 
+       case error.PERMISSION_DENIED: 
+          document.getElementById("error").innerHTML="Vous devez autoriser la localisation pour continuer"
+          break;
+       default: 
+          document.getElementById("error").innerHTML="Votre géolocalisation est impossible...";
+       } 
+    }; 
+    </script>
+    @if (session()->has('message'))
+    <script>
+        document.querySelector('#getLocation2').style.color ='#059669'
+    </script>
+    @endif
 </div>

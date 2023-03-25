@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-    protected $fillable = ['nomClient', 'prenomClient', 'mailClient', 'hotel_id','payer', 'tarif_id'];
+    protected $fillable = ['nomClient', 'prenomClient', 'mailClient', 'hotel_id','payer','code', 'tarif_id'];
 
     use HasFactory;
 }

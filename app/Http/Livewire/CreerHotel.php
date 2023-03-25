@@ -12,6 +12,9 @@ class CreerHotel extends Component
     public $file;
     public $name;
     public $type;
+    public $longitude;
+    public $latitude;
+    protected $listeners = ['LocationAdded' => 'getPosition'];
 
     protected $rules = [
         'file' => ['required','image'],
@@ -35,15 +38,27 @@ class CreerHotel extends Component
       }
 
     public function store(){
+      if($this->latitude == null || $this->longitude == null){
+        session()->flash('erreur', 'Vous devez cliquez sur l\'icône de localisation ci dessous');
+      }else{
         $this->validate();
         $path = $this->file->store('images','public');
         Hotel::create([
             'nom'=>$this->name,
             'type'=>$this->type,
+            'longitude' => $this->longitude,
+            'latitude' => $this->latitude,
             'image_path'=> $path,
             'user_id'=> auth()->user()->id,
         ]);
          return redirect()->route('my-dashboard');
+      }
+    }
+
+    public function getPosition($position){
+      $this->latitude = $position[0];
+      $this->longitude = $position[1];
+      session()->flash('message', 'Position récupéré avec succès');
     }
 
     public function render()

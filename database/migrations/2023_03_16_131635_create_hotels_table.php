@@ -18,6 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('type');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->string('image_path');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
