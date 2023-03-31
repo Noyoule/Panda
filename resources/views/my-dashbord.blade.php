@@ -70,7 +70,7 @@
            <a href="{{ route('profile.edit') }}">
             <button type="button"
             class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
-            Open
+            Profile
         </button>
            </a>
         </div>
@@ -108,8 +108,8 @@
         <div>
             <h2 class="text-2xl font-bold mb-4">Reservations de cette journée</h2>
 
-            <div class="space-y-4" style="overflow-y: scroll">
-              @foreach ($reservations as $reservation)
+            <div class="space-y-4 p-2" style="max-height:300px;overflow-y:scroll">
+              @forelse ($reservations as $reservation)
               <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                 <div class="flex justify-between">
                     <div class="text-gray-400 text-xs">Numéro de chambre: {{ $reservation->chambre }}</div>
@@ -128,7 +128,11 @@
                 </div>
                </a>
             </div>
-              @endforeach
+            @empty
+<div>
+    Pas de reservation
+</div>
+              @endforelse
             </div>
         </div>
     </div>
@@ -136,11 +140,11 @@
 @endif
 <style>
     ::-webkit-scrollbar{
-        width: 10px;
+        width: 6px;
     }
 
     ::-webkit-scrollbar-thumb{
-        background-color: black;
+        background-color: #FDE68A;
         border-radius:5px; 
     }
     .active{

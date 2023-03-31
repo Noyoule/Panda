@@ -19,10 +19,16 @@ class DashbordController extends Controller
             $chambre_libre = 0;
             $chambre = 0;
         }
-        $reservation = auth()->user()->hotel->reservations()
-        ->whereDate('updated_at', date('Y-m-d'))
+        if(auth()->user()->hotel){
+            $reservation = auth()->user()->hotel->reservations()
+            ->whereDate('updated_at', date('Y-m-d'))
         ->where('payer',1)
         ->get();
+
+        }else{
+            $reservation = [];
+        }
+
         return view('my-dashbord', [
             'reservations' => $reservation,
             'hotel' => $hotel,
